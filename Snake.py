@@ -10,7 +10,7 @@ Screen = pygame.display.set_mode((600,600))
 pygame.display.set_caption('Snake')
 
 
-c = 0
+points = 0
 
 def game_restart():
     my_direction = LEFT
@@ -69,6 +69,8 @@ while True:
         #test if the snake head get
         apples = apples_pos()
         snake.append(apples)
+        points += 1
+        print(f'Pontuação: {points}')
 
 
     for i in range(len(snake)-1, 0, -1):
@@ -86,8 +88,7 @@ while True:
 
     
     if snake_collission(snake):
-        c += 1
-        print('losee', c)
+        points = 0
         my_direction,snake = game_restart()
 
     Screen.fill((0, 0, 0))
